@@ -48,4 +48,3 @@ build: |
   cp -a bin $PREFIX
   cp -a ${LINGLONG_APPID} $PREFIX
   cp -a share $PREFIX
-  cp -a libs $PREFIX/lib
