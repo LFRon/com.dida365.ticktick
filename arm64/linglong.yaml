@@ -1,0 +1,51 @@
+version: "1"
+
+package:
+  id: com.dida365.ticktick
+  name: 滴答清单
+  version: 6.0.40.0
+  kind: app
+  description: |
+    滴答清单（TickTick）是一款功能强大的跨平台任务管理应用, 这是其Linux原生版本
+
+base: org.deepin.base/25.2.1
+runtime:
+command:
+  - "/opt/apps/com.dida365.ticktick/files/bin/com.dida365.ticktick"
+
+sources:
+  - kind: file
+    url: https://cdn.dida365.cn/download/linux/linux_deb_arm64/dida-6.0.40-arm64.deb
+    digest: ece36967b835539969155ff3e2c66623230daaff6a0500d00703217e783a7675
+
+build: |
+  ## 环境设置
+  set -x
+  SOURCES="linglong/app-sources"
+  export PATH=$PATH:/usr/libexec/linglong/builder/helper
+  BINNAME=${LINGLONG_APPID}
+  cd ${SOURCES}
+
+  # 清理旧的安装包文件
+  rm -rf target.deb ${LINGLONG_APPID}
+
+  # 移动安装包至此处
+  cp ../sources/*.deb ./target.deb
+
+  # 解包deb并拷贝出应用本体
+  dpkg-deb -R ./target.deb deb
+  mv ./deb/opt/dida ./${LINGLONG_APPID}
+
+  # 删除多余目录与安装包
+  rm -rf ./deb ./target.deb
+
+  # 写入启动脚本
+  echo "#!/bin/bash" > bin/${BINNAME}
+  echo "exec \"${PREFIX}/${LINGLONG_APPID}/dida\" \"\$@\"" >> bin/${BINNAME}
+  chmod +x bin/*
+
+  # 进行安装
+  cp -a bin $PREFIX
+  cp -a ${LINGLONG_APPID} $PREFIX
+  cp -a share $PREFIX
+  cp -a libs $PREFIX/lib
