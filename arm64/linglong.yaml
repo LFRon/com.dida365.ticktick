@@ -3,20 +3,20 @@ version: "1"
 package:
   id: com.dida365.ticktick
   name: 滴答清单
-  version: 6.0.40.0
+  version: 8.0.0.0
   kind: app
   description: |
     滴答清单（TickTick）是一款功能强大的跨平台任务管理应用, 这是其Linux原生版本
 
-base: org.deepin.base/25.2.1
+base: org.deepin.base/25.2.2
 runtime:
 command:
   - "/opt/apps/com.dida365.ticktick/files/bin/com.dida365.ticktick"
 
 sources:
   - kind: file
-    url: https://cdn.dida365.cn/download/linux/linux_deb_arm64/dida-6.0.40-arm64.deb
-    digest: ece36967b835539969155ff3e2c66623230daaff6a0500d00703217e783a7675
+    url: https://cdn.dida365.cn/download/linux/linux_deb_arm64/dida-8.0.0-arm64.deb
+    digest: ff819d0705ab574d30e610e5404d419304d2fc63302af1e6c686a9dc836aa471
 
 build: |
   ## 环境设置
@@ -41,7 +41,7 @@ build: |
 
   # 写入启动脚本
   echo "#!/bin/bash" > bin/${BINNAME}
-  echo "exec \"${PREFIX}/${LINGLONG_APPID}/dida\" \"\$@\"" >> bin/${BINNAME}
+  echo "exec \"${PREFIX}/${LINGLONG_APPID}/dida\" \"--no-sandbox\" \"\$@\"" >> bin/${BINNAME}
   chmod +x bin/*
 
   # 进行安装
