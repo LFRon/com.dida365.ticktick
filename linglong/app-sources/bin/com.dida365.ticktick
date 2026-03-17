@@ -1,2 +1,2 @@
 #!/bin/bash
-exec "/opt/apps/com.dida365.ticktick/files/com.dida365.ticktick/dida" "$@"
+exec "/opt/apps/com.dida365.ticktick/files/com.dida365.ticktick/dida" "--no-sandbox" "$@"
