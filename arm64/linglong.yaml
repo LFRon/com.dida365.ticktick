@@ -1,7 +1,7 @@
 version: "1"
 
 package:
-  id: com.dida365.ticktick
+  id: cn.ticktick.task
   name: 滴答清单
   version: 8.0.0.0
   kind: app
@@ -11,7 +11,7 @@ package:
 base: org.deepin.base/25.2.2
 runtime:
 command:
-  - "/opt/apps/com.dida365.ticktick/files/bin/com.dida365.ticktick"
+  - "/opt/apps/cn.ticktick.task/files/bin/cn.ticktick.task"
 
 sources:
   - kind: file
