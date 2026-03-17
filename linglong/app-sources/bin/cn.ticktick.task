@@ -1,0 +1,2 @@
+#!/bin/bash
+exec "/opt/apps/cn.ticktick.task/files/cn.ticktick.task/dida" "--no-sandbox" "$@"
