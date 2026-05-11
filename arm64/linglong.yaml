@@ -3,20 +3,20 @@ version: "1"
 package:
   id: cn.ticktick.task
   name: 滴答清单
-  version: 8.0.0.0
+  version: 8.0.10.0
   kind: app
   description: |
     滴答清单（TickTick）是一款功能强大的跨平台任务管理应用, 这是其Linux原生版本
 
 base: org.deepin.base/25.2.2
-runtime:
+runtime: null
 command:
   - "/opt/apps/cn.ticktick.task/files/bin/cn.ticktick.task"
 
 sources:
   - kind: file
-    url: https://cdn.dida365.cn/download/linux/linux_deb_arm64/dida-8.0.0-arm64.deb
-    digest: ff819d0705ab574d30e610e5404d419304d2fc63302af1e6c686a9dc836aa471
+    url: https://cdn.dida365.cn/download/linux/linux_deb_arm64/dida-8.0.10-arm64.deb
+    digest: 3b2e7b8372d93d54e061458549208c2d65020c626df2c2090ce98ca67cffefa3
 
 build: |
   ## 环境设置
